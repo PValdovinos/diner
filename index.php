@@ -14,7 +14,7 @@ require_once ('vendor/autoload.php');
 $f3 = Base::instance();
 
 // Define a default route
-// https://tostrander.greenriverdev.com/328/hello-fat-free/
+// https://pvaldovinos-reyes.greenriverdev.com/328/diner/
 $f3->route('GET /', function() {
     //echo '<h1>Hello from My Diner App!</h1>';
 
@@ -66,8 +66,18 @@ $f3->route('GET|POST /order1', function($f3) {
 
         // If the data valid
         if (true) {
+
+            // Add the data to the session array
             $f3->set('SESSION.food', $food);
             $f3->set('SESSION.meal', $meal);
+
+            // Send the user to the next form
+            $f3->reroute('order2');
+        }
+        else
+        {
+            // Temporary
+            echo "<p>Validation errors</p>";
         }
     }
 
@@ -77,7 +87,9 @@ $f3->route('GET|POST /order1', function($f3) {
 });
 
 // Order Form Part II
-$f3->route('GET /order2', function() {
+$f3->route('GET /order2', function($f3) {
+
+    var_dump ($f3->get('SESSION'));
     //echo '<h1>My Breakfast Menu</h1>';
 
     // Render a view page

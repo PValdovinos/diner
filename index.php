@@ -24,7 +24,8 @@ $f3->route('GET /', function(){
 $f3->route('GET /menus/breakfast', function(){
     echo '<h1>My Breakfast Menu</h1>';
 
-    /*render a view page
+    /*
+     * Render a view page
     $view = new Template();
     echo $view->render('views/home.html');
     */
